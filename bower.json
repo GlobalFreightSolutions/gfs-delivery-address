@@ -1,0 +1,16 @@
+{
+	"name": "gfs-delivery-address",
+	"version": "0.0.1",
+	"description": "Add a description",
+	"dependencies": {
+		"polymer": "~1.6.0"
+	},
+	"main":"gfs-delivery-address.html",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/GlobalFreightSolutions/gfs-delivery-address"
+	},
+	"ignore": [
+	],
+	"private": true
+}
