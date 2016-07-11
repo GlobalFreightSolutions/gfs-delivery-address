@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"description": "Add a description",
 	"dependencies": {
-		"polymer": "~1.6.0"
+		"polymer": "~1.6.0",
+	    "webcomponentsjs": "^0.7.22"
 	},
 	"main":"gfs-delivery-address.html",
 	"repository": {
