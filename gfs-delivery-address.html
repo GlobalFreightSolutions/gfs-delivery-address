@@ -61,7 +61,16 @@
 
             },
             ready: function() {
-	           
+            	window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
+            },
+            onDroppointChanged: function (e) {
+            	this.set("droppointData", e.detail);
+            	if (this.droppointData.chosen === true) {
+            		this.overrideStreetAddress = this.droppointData.geoLocation.addressLines + ', ' + this.droppointData.geoLocation.town + ', ' + this.droppointData.geoLocation.postCode;
+            	}
+            	else {
+            		this.overrideStreetAddress = this.initialAddress;
+            	}
             }
         });
     </script>
