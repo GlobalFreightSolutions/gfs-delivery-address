@@ -6,6 +6,12 @@
 		"polymer": "~1.6.0",
 	    "webcomponentsjs": "^0.7.22"
 	},
+	"devdependencies": {
+	    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+		"iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+		"web-component-tester": "^4.0.0",
+		"webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+	},
 	"main":"gfs-delivery-address.html",
 	"repository": {
 		"type": "git",
