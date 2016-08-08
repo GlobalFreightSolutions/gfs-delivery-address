@@ -13,7 +13,7 @@
 			padding: 10px;
 			/*margin: 10px;*/
 			min-height: 120px;
-			background-color: #FAFAFA;
+			background-color: #fff;
 			border-radius: 3px;
 			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 			border: 1px solid #FAFAFA;
@@ -34,8 +34,12 @@
                 <template is="dom-if" if="{{!overrideStreetAddress}}">
                     <div class="infoText"><strong>Your order will be delivered to:</strong> {{defaultStreetAddress}}</div>
                 </template>
-				<template is="dom-if" if="{{_visible}}">
-					<div class="infoText"><strong>You have selected the:</strong> {{selectedService}}</div>
+
+				<template is="dom-if" if="{{!selectedService}}">
+					<div class="infoText"><strong>Your chosen delivery service:</strong> {{notSelectedService}}</div>
+				</template>
+				<template is="dom-if" if="{{selectedService}}">
+					<div class="infoText"><strong>Your chosen delivery service:</strong> {{selectedService}}</div>
 				</template>
             </div>
         </div>
@@ -61,7 +65,12 @@
                 	value: false
                 },
                 selectedService: {
-                	type: String
+                	type: String,
+					value: null
+                },
+                notSelectedService: {
+                	type: String,
+                	value: 'You have not chosen a delivery service'
                 }
 
             },
@@ -84,14 +93,26 @@
             	}
             },
            _getStandardSelectedService: function (e) {
-            	this._visible = e.detail.checked;
-            	this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+           		this._visible = e.detail.checked;
+           		if (Object.keys(e.detail).length > 0) {
+					this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+           		}
+           		else {
+           			this.selectedService = this.notSelectedService;
+           		}
             },
             _getCalendarSelectedService: function (e) {
             	var getTheTime = new Date(e.detail.expDeliveryDateEnd);
 
             	this._visible = e.detail.checked;
-            	this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' by ' + (getTheTime.getUTCHours() + 1) + ':' + (getTheTime.getUTCMinutes() < '10' ? '0' : '') + getTheTime.getUTCMinutes();
+
+            	if (Object.keys(e.detail).length > 0) {
+            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' by ' + (getTheTime.getUTCHours() + 1) + ':' + (getTheTime.getUTCMinutes() < '10' ? '0' : '') + getTheTime.getUTCMinutes();
+            	}
+            	else {
+            		this.selectedService = this.notSelectedService;
+            	}
+            	
             },
             _getDroppointSelectedService: function (e) {
             	var startDate = new Date(e.detail.expDeliveryDateStart).setHours(0, 0, 0);
@@ -99,11 +120,16 @@
 
             	this._visible = e.detail.checked;
 
-            	if (startDate === endDate) {
-            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
+            	if (Object.keys(e.detail).length > 0) {
+            		if (startDate === endDate) {
+            			this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
+            		}
+            		else {
+            			this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+            		}
             	}
             	else {
-            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+            		this.selectedService = this.notSelectedService;
             	}
             },
         });
