@@ -89,7 +89,7 @@
             		this.overrideStreetAddress = this.droppointData.geoLocation.addressLines + ', ' + this.droppointData.geoLocation.town + ', ' + this.droppointData.geoLocation.postCode;
             	}
             	else {
-            		this.overrideStreetAddress = this.initialAddress;
+            		this.overrideStreetAddress = this.defaultStreetAddress;
             	}
             },
            _getStandardSelectedService: function (e) {
@@ -112,7 +112,6 @@
             	else {
             		this.selectedService = this.notSelectedService;
             	}
-            	
             },
             _getDroppointSelectedService: function (e) {
             	var startDate = new Date(e.detail.expDeliveryDateStart).setHours(0, 0, 0);
