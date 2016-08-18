@@ -4,7 +4,6 @@
 	"description": "Add a description",
 	"dependencies": {
 		"polymer": "~1.6.0",
-	    "webcomponentsjs": "^0.7.22"
 	},
 	"devDependencies": {
 	    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
