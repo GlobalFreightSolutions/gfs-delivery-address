@@ -106,7 +106,7 @@
             	this._visible = e.detail.checked;
 
             	if (Object.keys(e.detail).length > 0) {
-            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).add(1, 'hours').format("h:mma");
+            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).format("h:mma");
             	}
             	else {
             		this.selectedService = this.notSelectedService;
