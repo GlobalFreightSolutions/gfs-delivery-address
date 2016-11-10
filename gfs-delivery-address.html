@@ -26,7 +26,7 @@
 
 	<template>
         <div id="container">  
-            <h3>Your Delivery</h3>      
+            <h3>{{title}}</h3>      
             <div class="info"> 
                 <template is="dom-if" if="{{overrideStreetAddress}}">
                     <div class="infoText"><strong>Your order will be delivered to:</strong> {{overrideStreetAddress}}</div>
@@ -53,6 +53,10 @@
             is: "gfs-delivery-address",
 
             properties: {
+                title: {
+                    type: String,
+                    value: "Your Delivery"
+                },
                 defaultStreetAddress: {
                 	type: String
                 },
