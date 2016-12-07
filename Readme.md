@@ -8,4 +8,4 @@ The `gfs-delivery-address` widget provides the users address, the selected servi
 </gfs-delivery-address>
 ```
 
-More info and all the available properties can be found at [GFS widget portal](http://gfsdeveloperportal.azurewebsites.net/documentation/gfs-checkout/the-gfs-checkout-widgets/the-delivery-address-widget/ "The GFS Delivery Address Widget")
+More info and all the available properties can be found at [GFS widget portal](http://gfsdeveloperportal.azurewebsites.net/documentation/gfs-checkout/the-gfs-checkout-widgets/delivery-address-widget/ "The GFS Delivery Address Widget")
