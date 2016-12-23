@@ -6,8 +6,7 @@
 			font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 		}
 		.infoText {
-			margin-top: 0.5em;
-			margin-bottom: 0.5em;
+			margin: 10px 0 0;
 		}
 		#container {
 			padding: 10px;
@@ -21,6 +20,10 @@
 		h3 {
 			margin-top: 0px;
 		}
+        .red {
+            color: #d60000;
+            font-weight: bold;
+        }
 	</style>
 
 
@@ -29,17 +32,21 @@
             <h3>{{title}}</h3>      
             <div class="info"> 
                 <template is="dom-if" if="{{overrideStreetAddress}}">
-                    <div class="infoText"><strong>Your order will be delivered to:</strong> {{overrideStreetAddress}}</div>
+                    <div class="infoText"><strong>Your order will be delivered to:</strong> </div>
+                    <di class="delivery-address">{{overrideStreetAddress}}</div>
                 </template>
                 <template is="dom-if" if="{{!overrideStreetAddress}}">
-                    <div class="infoText"><strong>Your order will be delivered to:</strong> {{defaultStreetAddress}}</div>
+                    <div class="infoText"><strong>Your order will be delivered to:</strong></div>
+                    <div class="delivery-address">{{defaultStreetAddress}}</div>
                 </template>
 
 				<template is="dom-if" if="{{!selectedService}}">
-					<div class="infoText"><strong>Your chosen delivery service:</strong> {{notSelectedService}}</div>
+					<div class="infoText"><strong>Your chosen delivery service:</strong></div>
+                    <div class="red">{{notSelectedService}}</div>
 				</template>
 				<template is="dom-if" if="{{selectedService}}">
-					<div class="infoText"><strong>Your chosen delivery service:</strong> {{selectedService}}</div>
+					<div class="infoText"><strong>Your chosen delivery service:</strong></div>
+                    <div>{{selectedService}}</div>
 				</template>
             </div>
         </div>
@@ -55,7 +62,7 @@
             properties: {
                 title: {
                     type: String,
-                    value: "Your Delivery"
+                    value: "Your delivery"
                 },
                 defaultStreetAddress: {
                 	type: String
@@ -102,7 +109,7 @@
 					this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
            		}
            		else {
-           			this.selectedService = this.notSelectedService;
+           		    this.selectedService = null;
            		}
             },
             _getCalendarSelectedService: function (e) {
@@ -113,7 +120,7 @@
             		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).format("h:mma");
             	}
             	else {
-            		this.selectedService = this.notSelectedService;
+            		this.selectedService = null;
             	}
             },
             _getDroppointSelectedService: function (e) {
@@ -131,7 +138,7 @@
             		}
             	}
             	else {
-            		this.selectedService = this.notSelectedService;
+            		this.selectedService = null;
             	}
             },
         });
