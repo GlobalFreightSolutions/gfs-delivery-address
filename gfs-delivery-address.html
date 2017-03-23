@@ -1,36 +1,42 @@
 ﻿<link rel="import" href="../polymer/polymer.html" />
 
+<!--
+    `gfs-carrier-info`
+    A polymer widget for displaying information on a carrier
+
+    @demo demo/index.html
+-->
+
 <dom-module id="gfs-delivery-address">
-	<style>
-		div, span, h3 {
-			font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-		}
-		.infoText {
-			margin: 10px 0 0;
-		}
-		#container {
-			padding: 10px;
-			/*margin: 10px;*/
-			min-height: 120px;
-			background-color: #fff;
-			border-radius: 3px;
-			box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-			border: 1px solid #FAFAFA;
-		}
-		h3 {
-			margin-top: 0px;
-		}
+    <style>
+        div, span, h3 {
+            font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+        }
+        .infoText {
+            margin: 10px 0 0;
+        }
+        #container {
+            padding: 10px;
+            min-height: 120px;
+            background-color: #fff;
+            border-radius: 3px;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            border: 1px solid #FAFAFA;
+        }
+        h3 {
+            margin-top: 0px;
+        }
         .red {
             color: #d60000;
             font-weight: bold;
         }
-	</style>
+    </style>
 
 
-	<template>
-        <div id="container">  
-            <h3>{{title}}</h3>      
-            <div class="info"> 
+    <template>
+        <div id="container">
+            <h3>{{title}}</h3>
+            <div class="info">
                 <template is="dom-if" if="{{overrideStreetAddress}}">
                     <div class="infoText"><strong>Your order will be delivered to:</strong> </div>
                     <di class="delivery-address">{{overrideStreetAddress}}</div>
@@ -40,14 +46,14 @@
                     <div class="delivery-address">{{defaultStreetAddress}}</div>
                 </template>
 
-				<template is="dom-if" if="{{!selectedService}}">
-					<div class="infoText"><strong>Your chosen delivery service:</strong></div>
+                <template is="dom-if" if="{{!selectedService}}">
+                    <div class="infoText"><strong>Your chosen delivery service:</strong></div>
                     <div class="red">{{notSelectedService}}</div>
-				</template>
-				<template is="dom-if" if="{{selectedService}}">
-					<div class="infoText"><strong>Your chosen delivery service:</strong></div>
+                </template>
+                <template is="dom-if" if="{{selectedService}}">
+                    <div class="infoText"><strong>Your chosen delivery service:</strong></div>
                     <div>{{selectedService}}</div>
-				</template>
+                </template>
             </div>
         </div>
 
@@ -65,23 +71,23 @@
                     value: "Your delivery"
                 },
                 defaultStreetAddress: {
-                	type: String
+                    type: String
                 },
                 overrideStreetAddress: {
                     type: String,
                     value: null
                 },
                 _visible: {
-                	type: Boolean,
-                	value: false
+                    type: Boolean,
+                    value: false
                 },
                 selectedService: {
-                	type: String,
-					value: null
+                    type: String,
+                    value: null
                 },
                 notSelectedService: {
-                	type: String,
-                	value: 'You have not chosen a delivery service'
+                    type: String,
+                    value: 'You have not chosen a delivery service'
                 }
 
             },
@@ -89,57 +95,57 @@
 
             },
             ready: function() {
-            	window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
-            	window.addEventListener('getStandardSelectedService', this._getStandardSelectedService.bind(this), false);
-            	window.addEventListener('getCalendarSelectedService', this._getCalendarSelectedService.bind(this), false);
-            	window.addEventListener('getDroppointSelectedService', this._getDroppointSelectedService.bind(this), false);
+                window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
+                window.addEventListener('getStandardSelectedService', this._getStandardSelectedService.bind(this), false);
+                window.addEventListener('getCalendarSelectedService', this._getCalendarSelectedService.bind(this), false);
+                window.addEventListener('getDroppointSelectedService', this._getDroppointSelectedService.bind(this), false);
             },
             onDroppointChanged: function (e) {
-            	this.set("droppointData", e.detail);
-            	if (this.droppointData.chosen === true) {
-            		this.overrideStreetAddress = this.droppointData.geoLocation.addressLines + ', ' + this.droppointData.geoLocation.town + ', ' + this.droppointData.geoLocation.postCode;
-            	}
-            	else {
-            		this.overrideStreetAddress = this.defaultStreetAddress;
-            	}
+                this.set("droppointData", e.detail);
+                if (this.droppointData.chosen === true) {
+                    this.overrideStreetAddress = this.droppointData.geoLocation.addressLines + ', ' + this.droppointData.geoLocation.town + ', ' + this.droppointData.geoLocation.postCode;
+                }
+                else {
+                    this.overrideStreetAddress = this.defaultStreetAddress;
+                }
             },
            _getStandardSelectedService: function (e) {
-           		this._visible = e.detail.checked;
-           		if (Object.keys(e.detail).length > 0) {
-					this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
-           		}
-           		else {
-           		    this.selectedService = null;
-           		}
+                   this._visible = e.detail.checked;
+                   if (Object.keys(e.detail).length > 0) {
+                    this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+                   }
+                   else {
+                       this.selectedService = null;
+                   }
             },
             _getCalendarSelectedService: function (e) {
-            	var getTheTime = new Date(e.detail.expDeliveryDateEnd);
-            	this._visible = e.detail.checked;
+                var getTheTime = new Date(e.detail.expDeliveryDateEnd);
+                this._visible = e.detail.checked;
 
-            	if (Object.keys(e.detail).length > 0) {
-            		this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).format("h:mma");
-            	}
-            	else {
-            		this.selectedService = null;
-            	}
+                if (Object.keys(e.detail).length > 0) {
+                    this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).format("h:mma");
+                }
+                else {
+                    this.selectedService = null;
+                }
             },
             _getDroppointSelectedService: function (e) {
-            	var startDate = new Date(e.detail.expDeliveryDateStart).setHours(0, 0, 0);
-            	var endDate = new Date(e.detail.expDeliveryDateEnd).setHours(0, 0, 0);
+                var startDate = new Date(e.detail.expDeliveryDateStart).setHours(0, 0, 0);
+                var endDate = new Date(e.detail.expDeliveryDateEnd).setHours(0, 0, 0);
 
-            	this._visible = e.detail.checked;
+                this._visible = e.detail.checked;
 
-            	if (Object.keys(e.detail).length > 0) {
-            		if (startDate === endDate) {
-            			this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
-            		}
-            		else {
-            			this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
-            		}
-            	}
-            	else {
-            		this.selectedService = null;
-            	}
+                if (Object.keys(e.detail).length > 0) {
+                    if (startDate === endDate) {
+                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
+                    }
+                    else {
+                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+                    }
+                }
+                else {
+                    this.selectedService = null;
+                }
             },
         });
     </script>

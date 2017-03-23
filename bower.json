@@ -1,22 +1,32 @@
 {
-	"name": "gfs-delivery-address",
-	"version": "0.0.1",
-	"description": "Add a description",
-	"dependencies": {
-		"polymer": "~1.6.0"
-	},
-	"devDependencies": {
-	    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-		"iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
-		"web-component-tester": "^4.0.0",
-		"webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
-	},
-	"main":"gfs-delivery-address.html",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/GlobalFreightSolutions/gfs-delivery-address.git"
-	},
-	"ignore": [
-	],
-	"private": true
+    "name": "gfs-delivery-address",
+    "version": "0.0.1",
+    "description": "The Delivery Address widget provides the user's address, the selected service and the droppoint address, if a droppoint is selected",
+    "authors": [
+        "Global Freight Solutions Ltd <devsupport@justshoutgfs.com>"
+    ],
+    "keywords": [
+        "delivery address",
+        "gfs",
+        "checkout",
+        "polymer",
+        "web-components"
+    ],
+    "dependencies": {
+        "polymer": "~1.6.0"
+    },
+    "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+        "web-component-tester": "^4.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    },
+    "main": "gfs-delivery-address.html",
+    "license": "Apache 2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GlobalFreightSolutions/gfs-delivery-address.git"
+    },
+    "ignore": [
+    ]
 }

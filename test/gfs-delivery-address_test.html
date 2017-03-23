@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <script src="../bower_components/web-component-tester/browser.js"></script>
+
+        <link rel="import" href="../gfs-delivery-address.html">
+    </head>
+    <body>
+        <test-fixture id="gfsDeliveryAddress">
+            <template>
+                <gfs-delivery-address id="delivery-address" default-street-address="100 Station Road, Horsham, RH13 5UZ, United Kingdom"></gfs-delivery-address>
+            </template>
+        </test-fixture>
+
+        <script>
+            suite('gfs-carrier-info', function() {
+                var gfsDeliveryAddress = fixture('gfsDeliveryAddress');
+
+                test('instantiating the element works', function() {
+                    expect(gfsDeliveryAddress).to.be.ok;
+                });
+
+                test('element has default address', function() {
+                    expect(gfsDeliveryAddress.defaultStreetAddress).to.be.equal("100 Station Road, Horsham, RH13 5UZ, United Kingdom");
+                });
+
+                test('element has not selected service', function() {
+                    expect(gfsDeliveryAddress.electedService).to.be.undefined;
+                });
+
+                test('element has selected service', function() {
+                    gfsDeliveryAddress.selectedService = "Standard service, (£0), Est. arrival: Mon, 27th March - Wed, 29th March"
+                    expect(gfsDeliveryAddress.selectedService).to.be.equal("Standard service, (£0), Est. arrival: Mon, 27th March - Wed, 29th March");
+                });
+            });
+        </script>
+    </body>
+</html>
