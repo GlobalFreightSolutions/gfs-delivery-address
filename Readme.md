@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address.svg?branch=develop)](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address)
+[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address.svg?branch=develop)](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address) [![Build Status](https://saucelabs.com/buildstatus/globalfreightsolutions)](https://saucelabs.com/beta/builds/4fa56286de8645359bcc688b8ac1ed10)
 
 
 # &lt;gfs-delivery-address&gt;
