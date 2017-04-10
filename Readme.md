@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address.svg?branch=develop)](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address) [![Build Status](https://saucelabs.com/buildstatus/globalfreightsolutions)](https://saucelabs.com/beta/builds/4fa56286de8645359bcc688b8ac1ed10)
+[![Build Status](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address.svg?branch=master)](https://travis-ci.org/GlobalFreightSolutions/gfs-delivery-address)
 
 
 # &lt;gfs-delivery-address&gt;
@@ -46,7 +46,7 @@ $ bower install --save gfs-delivery-address
 </gfs-delivery-address>
 ```
 
-More info, demo and all the available properties can be found at [GFS widget portal](http://gfsdeveloperportal.azurewebsites.net/info/documentation/gfs-checkout/the-gfs-checkout-widgets/delivery-address-widget/ "The GFS Delivery Address Widget")
+More info, demo and all the available properties can be found at [GFS widget portal](http://developer.justshoutgfs.com/info/documentation/gfs-checkout/the-gfs-checkout-widgets/delivery-address-widget/ "The GFS Delivery Address Widget")
 
 
 ## License
