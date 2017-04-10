@@ -1,6 +1,6 @@
 {
     "name": "gfs-delivery-address",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "The Delivery Address widget provides the user's address, the selected service and the droppoint address, if a droppoint is selected",
     "authors": [
         "Global Freight Solutions Ltd <devsupport@justshoutgfs.com>"
