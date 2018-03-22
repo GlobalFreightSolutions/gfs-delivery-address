@@ -100,6 +100,7 @@
                 window.addEventListener('getStandardSelectedService', this._getStandardSelectedService.bind(this), false);
                 window.addEventListener('getCalendarSelectedService', this._getCalendarSelectedService.bind(this), false);
                 window.addEventListener('getDroppointSelectedService', this._getDroppointSelectedService.bind(this), false);
+                window.addEventListener('getStoreSelectedService', this._getDroppointSelectedService.bind(this), false);
             },
             onDroppointChanged: function (e) {
                 this.set("droppointData", e.detail);
