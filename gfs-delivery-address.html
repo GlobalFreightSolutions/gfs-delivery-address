@@ -97,6 +97,7 @@
             },
             ready: function() {
                 window.addEventListener('droppoint-changed', this.onDroppointChanged.bind(this), false);
+                window.addEventListener('store-changed', this.onStoreChanged.bind(this), false);
                 window.addEventListener('getStandardSelectedService', this._getStandardSelectedService.bind(this), false);
                 window.addEventListener('getCalendarSelectedService', this._getCalendarSelectedService.bind(this), false);
                 window.addEventListener('getDroppointSelectedService', this._getDroppointSelectedService.bind(this), false);
@@ -106,6 +107,15 @@
                 this.set("droppointData", e.detail);
                 if (this.droppointData.chosen === true) {
                     this.overrideStreetAddress = this.droppointData.geoLocation.addressLines + ', ' + this.droppointData.geoLocation.town + ', ' + this.droppointData.geoLocation.postCode;
+                }
+                else {
+                    this.overrideStreetAddress = this.defaultStreetAddress;
+                }
+            },
+            onStoreChanged: function (e) {
+                this.set("storeData", e.detail);
+                if (this.storeData.chosen === true) {
+                    this.overrideStreetAddress = this.storeData.geoLocation.addressLines + ', ' + this.storeData.geoLocation.town + ', ' + this.storeData.geoLocation.postCode;
                 }
                 else {
                     this.overrideStreetAddress = this.defaultStreetAddress;
