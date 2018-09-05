@@ -124,7 +124,7 @@
            _getStandardSelectedService: function (e) {
                    this._visible = e.detail.checked;
                    if (Object.keys(e.detail).length > 0) {
-                    this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+                       this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + parseFloat(e.detail.shipping).toFixed(2) + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
                    }
                    else {
                        this.selectedService = null;
@@ -135,7 +135,7 @@
                 this._visible = e.detail.checked;
 
                 if (Object.keys(e.detail).length > 0) {
-                    this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment.parseZone(e.detail.expDeliveryDateEnd).format("h:mma");
+                    this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + parseFloat(e.detail.shipping).toFixed(2) + ')' + ', ' + 'Delivery on: ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMM") + ' by ' + moment(e.detail.expDeliveryDateEnd).format("h:mma");
                 }
                 else {
                     this.selectedService = null;
@@ -149,10 +149,10 @@
 
                 if (Object.keys(e.detail).length > 0) {
                     if (startDate === endDate) {
-                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
+                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + parseFloat(e.detail.shipping).toFixed(2) + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM");
                     }
                     else {
-                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + e.detail.shipping + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
+                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + parseFloat(e.detail.shipping).toFixed(2) + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
                     }
                 }
                 else {
