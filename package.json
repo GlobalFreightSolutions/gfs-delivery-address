@@ -1,0 +1,19 @@
+{
+    "name": "@gfsdeliver/gfs-delivery-address",
+    "version": "2.0.0",
+    "main": "gfs-delivery-address.js",
+    "author": "Global Freight Solutions",
+    "license": "Apache-2.0",
+    "scripts": {
+        "start": "polymer serve"
+    },
+    "dependencies": {
+        "@polymer/polymer": "^3.0.0",
+        "@webcomponents/webcomponentsjs": "^1.2.0",
+        "@gfsdeliver/gfs-carrier-icon": "^2.0.0"
+    },
+    "devDependencies": {
+        "polymer-cli": "^1.7.1",
+        "wct-browser-legacy": "^1.0.0"
+    }
+}
