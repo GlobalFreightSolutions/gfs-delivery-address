@@ -1,6 +1,17 @@
 {
+    "description": "The delivery address widget provides the user's address, the selected service and the droppoint address, if a droppoint is selected",
+    "keywords": [
+        "GFS",
+        "delivery address",
+        "web-components",
+        "web-component"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GlobalFreightSolutions/gfs-delivery-address.git"
+    },
     "name": "@gfsdeliver/gfs-delivery-address",
-    "version": "2.0.0",
+    "version": "2.0.0-preview.1",
     "main": "gfs-delivery-address.js",
     "author": "Global Freight Solutions",
     "license": "Apache-2.0",
@@ -9,11 +20,13 @@
     },
     "dependencies": {
         "@polymer/polymer": "^3.0.0",
-        "@webcomponents/webcomponentsjs": "^1.2.0",
-        "@gfsdeliver/gfs-carrier-icon": "^2.0.0"
+        "@gfsdeliver/gfs-carrier-icon": "^2.0.0-preview.1"
     },
     "devDependencies": {
         "polymer-cli": "^1.7.1",
-        "wct-browser-legacy": "^1.0.0"
+        "wct-browser-legacy": "^1.0.0",
+        "@polymer/iron-demo-helpers": "^3.0.1",
+        "@polymer/promise-polyfill": "^3.0.0-pre.20",
+        "@webcomponents/webcomponentsjs": "^2.0.0"
     }
 }
