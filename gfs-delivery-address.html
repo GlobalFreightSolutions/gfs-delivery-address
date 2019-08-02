@@ -124,6 +124,8 @@
            _getStandardSelectedService: function (e) {
                    this._visible = e.detail.checked;
                    if (Object.keys(e.detail).length > 0) {
+                       e.detail.expDeliveryDateEnd = moment(e.detail.expDeliveryDateEnd).isoWeekday() == 6 ? moment(e.detail.expDeliveryDateEnd).add(2, 'days') : (moment(e.detail.expDeliveryDateEnd).isoWeekday() == 7 ? moment(e.detail.expDeliveryDateEnd).add(1, 'days') : e.detail.expDeliveryDateEnd);
+
                        this.selectedService = e.detail.service + ' service, ' + '(' + e.detail.currencySymbol + parseFloat(e.detail.shipping).toFixed(2) + ')' + ', ' + 'Est. arrival: ' + moment(e.detail.expDeliveryDateStart).format("ddd, Do MMMM") + ' - ' + moment(e.detail.expDeliveryDateEnd).format("ddd, Do MMMM");
                    }
                    else {
