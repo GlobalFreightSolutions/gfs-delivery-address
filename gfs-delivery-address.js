@@ -1,7 +1,5 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/elements/dom-if.js';
-import '@polymer/polymer/lib/elements/dom-repeat.js';
-import '@gfsdeliver/gfs-carrier-icon/gfs-carrier-icon.js';
 import { format } from 'date-fns';
 
 import './gfs-delivery-address-style.js';

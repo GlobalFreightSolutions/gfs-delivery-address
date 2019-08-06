@@ -11,7 +11,7 @@
         "url": "https://github.com/GlobalFreightSolutions/gfs-delivery-address.git"
     },
     "name": "@gfsdeliver/gfs-delivery-address",
-    "version": "2.0.0-preview.1",
+    "version": "2.0.0-preview.2",
     "main": "gfs-delivery-address.js",
     "author": "Global Freight Solutions",
     "license": "Apache-2.0",
@@ -20,13 +20,13 @@
     },
     "dependencies": {
         "@polymer/polymer": "^3.0.0",
-        "@gfsdeliver/gfs-carrier-icon": "^2.0.0-preview.1"
+        "date-fns": "^2.0.0-beta.4"
     },
     "devDependencies": {
-        "polymer-cli": "^1.7.1",
-        "wct-browser-legacy": "^1.0.0",
-        "@polymer/iron-demo-helpers": "^3.0.1",
-        "@polymer/promise-polyfill": "^3.0.0-pre.20",
+        "wct-browser-legacy": "^1.0.1",
+        "@polymer/iron-test-helpers": "^3.0.0",
+        "@polymer/iron-component-page": "^4.0.0",
+        "@polymer/iron-demo-helpers": "^3.0.0",
         "@webcomponents/webcomponentsjs": "^2.0.0"
     }
 }

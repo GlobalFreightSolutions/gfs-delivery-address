@@ -1,0 +1,48 @@
+﻿﻿<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+        <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+        <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    </head>
+    <body>
+        <test-fixture id="address">
+            <template>
+                <gfs-delivery-address default-street-address="9 Piries Place, Horsham,  West Sussex, RH12 1EH"></gfs-delivery-address>
+            </template>
+        </test-fixture>
+
+        <script type="module">
+            import '@polymer/iron-test-helpers/mock-interactions.js';
+            import '../gfs-delivery-address.js';
+
+            suite('gfs-delivery-address', function () {
+                var address;
+
+                setup(function () {
+                    address = fixture('address');
+                });
+
+                test('instantiating the element works', function () {
+                    expect(address).to.be.ok;
+                });
+
+                test('can change element title', function () {
+                    address.title = "Delivery Address"
+                    expect(address.title).to.be.eql("Delivery Address");
+                });
+
+                test('element has default address', function() {
+                    expect(address.defaultStreetAddress).to.be.eql("9 Piries Place, Horsham,  West Sussex, RH12 1EH");
+                });
+
+                test('can set a service', function() {
+                    address.selectedService = "Standard (£1.11), Est. arrival: Thu, 8th August - Sun, 11th August";
+                    expect(address.selectedService).to.be.eql("Standard (£1.11), Est. arrival: Thu, 8th August - Sun, 11th August");
+                });
+            });
+        </script>
+    </body>
+</html>
